@@ -1,0 +1,47 @@
+<h2>Post an equation</h2>
+
+<mat-card class="formula_name">
+    <div class="button-row">
+        <button mat-raised-button (click)="onClick('Current_Price')">Current_Price</button>
+        <button mat-raised-button color="primary" (click)="onClick('Strike_Price')">Strike_Price</button>
+        <button mat-raised-button color="accent" (click)="onClick('Call_Prem')">Call_Prem</button>
+        <button mat-raised-button color="warn" (click)="onClick('Put_Premium')">Put_Premium</button>     
+    </div>
+    <div class="button-row">
+        <button mat-flat-button (click)="onClick('+')">+</button>
+        <button mat-flat-button (click)="onClick('-')">-</button>
+        <button mat-flat-button (click)="onClick('*')">*</button>
+        <button mat-flat-button (click)="onClick('/')">/</button>
+        <button mat-flat-button (click)="onClick('[')">(</button>
+        <button mat-flat-button (click)="onClick(']')">)</button>
+        <button mat-flat-button (click)="onReset(submitForm)"  
+        [disabled]="equation.length <= 0">Reset</button>
+    </div>
+</mat-card>
+<mat-card class="formula_equation">
+     <div>{{equation_api.join(' ')}}</div>
+</mat-card>
+<form (submit)="onSubmit(submitForm)" #submitForm="ngForm" class="submit">
+    <mat-form-field appearance="outline">
+        <mat-label>Enter uer name</mat-label>
+        <input 
+        matInput 
+        name="user"
+        placeholder="Enter user name" 
+        type="text" 
+        required
+        ngModel
+        #user="ngModel"
+        >
+        <mat-error *ngIf="user.invalid">Please enter user name</mat-error>
+    </mat-form-field> 
+    <button 
+        mat-raised-button 
+        color="primary" 
+        [disabled]="equation.length <= 0"
+        type="submit"
+        >Post
+    </button>   
+</form>
+
+

@@ -1,0 +1,32 @@
+.card_input {
+  width: clamp(250px, 550px, 60vw);
+  margin: 100px auto;
+  padding: 1.5rem;
+  &_number {
+    display: flex;
+    justify-content: space-around;
+    mat-form-field {
+      width: 45%;
+    }
+  }
+  button {
+    padding: 5px 1.8rem;
+    margin-left: 2.5%;
+    margin-top: 1rem;
+  }
+}
+.result {
+  display: flex;
+  justify-content: center;
+  .sum {
+    h3 {
+      text-align: center;
+      font-size: 2rem;
+      color: blue;
+    }
+    h5 {
+      text-align: center;
+      font-size: 1.7rem;
+    }
+  }
+}

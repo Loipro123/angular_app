@@ -1,0 +1,60 @@
+<mat-card class="card_input">
+   <form (submit)="onSubmit(submitForm)" #submitForm="ngForm">
+    <div class="card_input_number">
+        <mat-form-field appearance="outline">
+            <mat-label>Number 1</mat-label>
+            <input 
+            matInput 
+            name="num1"
+            placeholder="Enter a number" 
+            type="number" 
+            required
+            ngModel
+            [disabled]="display_result"
+            #num1="ngModel"
+            >
+            <mat-error *ngIf="num1.invalid">Please enter a number</mat-error>
+        </mat-form-field> 
+        <mat-form-field appearance="outline">
+            <mat-label>Number 2</mat-label>
+            <input 
+            matInput 
+            name="num2"
+            placeholder="Enter a number" 
+            type="number" 
+            required
+            ngModel
+            [disabled]="display_result"
+            #num2="ngModel">
+            <mat-error *ngIf="num2.invalid">Please enter a number</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="button-group">
+            <button 
+            mat-raised-button 
+            color="primary" 
+            type="submit"
+            [disabled]="display_result"
+            >Submit</button>    
+            <button 
+            mat-stroked-button 
+            color="primary"
+            (click)="onReset(submitForm)" 
+            type="button"
+            [disabled]="!display_result"
+            >Reset</button>
+    </div>
+   </form>
+    
+</mat-card>
+<div class="result" *ngIf="display_result">
+    <div *ngIf="display_progress; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock><mat-spinner></mat-spinner></ng-template>
+    <ng-template #elseBlock>
+        <div class="sum">
+            <h3>Sum</h3>
+            <h5>{{sum_number}}</h5>
+        </div>
+    </ng-template>
+    
+</div>

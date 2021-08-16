@@ -1,0 +1,50 @@
+<div class="header">
+  <div class="header_control">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose an option</mat-label>
+      <mat-select>
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option value="option3">Option 2</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="button"
+      (click)="seperateArray()"
+    >
+      Submit
+    </button>
+  </div>
+  <div class="header_btn">
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      [disabled]="table"
+      (click)="toogleTable()"
+    >
+      Table
+    </button>
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="toogleGraph()"
+      type="button"
+      [disabled]="graph"
+    >
+      Graph
+    </button>
+  </div>
+</div>
+<div *ngIf="ver_data.length > 1; else elseBlock">
+  <div *ngIf="table">
+    <app-table [rows]="ver_data" [headers]="hoz_data"></app-table>
+  </div>
+  <div *ngIf="graph">
+    <app-graph [value_array]="ver_data" [label_array]="hoz_data"></app-graph>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div class="nodata">No data is fetched</div>
+</ng-template>
